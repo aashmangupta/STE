@@ -1,6 +1,8 @@
 var firebase = require('firebase/app')
 require('firebase/database')
 
+// Firebase initialization
+
 var firebaseConfig = {
 	apiKey: "AIzaSyBGqmO0pz6CuC0mDcTX12kFXb2EshYwyKo",
 	authDomain: "first-80ba4.firebaseapp.com",
@@ -12,6 +14,18 @@ var firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig);
 
+var database = firebase.database();
+
+function storeUserData(user_id, venmo_name, game, price) {
+	firebase.database().ref('users/' + userId).set({
+		venmo_name: name,	//user's venmo user name
+		game: game,			//which game (Auburn, etc...)
+		price: price
+	});
+}
+
+
+// Done with Firebase
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
